@@ -1,60 +1,90 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+🛒 Laravel E-Commerce Cart System
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A simple e-commerce cart system built with Laravel 12 and Livewire v3, featuring product listing, cart management, checkout flow, background jobs, and scheduled reports.
 
-## About Laravel
+🚀 Tech Stack
+Laravel 12
+Livewire v3
+Laravel Breeze (auth starter kit)
+Tailwind CSS
+MySQL
+Queues & Scheduler
+Mail (Log / SMTP)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+📦 Features
+Product listing with stock status
+Add to cart with live counter
+Increment / decrement cart items
+Cart total calculation
+Checkout process
+Low stock email alert (queue job)
+Daily sales report email (scheduled job)
+Reusable Blade UI components
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+🗂️ Database Overview
+Main tables:
+users
+products
+carts
+cart_items
+orders
+order_items
+Each order stores the final total amount.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+🔄 Application Flow
+User logs in
+Views product list
+Adds product to cart
+Manages cart (quantity / remove)
+Checkout creates an order
+Stock updates
+Jobs trigger emails:
+Low stock alert
+Daily sales report
 
-## Learning Laravel
+🧠 Architecture & Patterns
+Livewire Components for UI logic
+Service / Repository pattern for cart logic
+Queue Jobs for emails
+Scheduler for daily reports
+Blade Components for buttons
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+🧵 Background Jobs
+LowStockJob
+Triggers when product stock falls below threshold
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+DailySalesReportJob
+Sends daily order & revenue summary
 
-## Laravel Sponsors
+⏰ Scheduler
+php artisan schedule:list
+Daily sales report runs at:
+23:59 (server time)
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+📧 Mail Configuration
+Emails are currently logged using:
+MAIL_MAILER=log
 
-### Premium Partners
+Change to SMTP for production.
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+⚙️ Setup
+composer install
+cp .env.example .env
+php artisan key:generate
+php artisan migrate
+npm install
+npm run dev
+php artisan serve
 
-## Contributing
+Run queues:
+php artisan queue:work
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+🔮 Future Improvements
+Payment gateway integration
+Admin dashboard
+Coupon system
+Inventory history
+API endpoints
 
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-# ecommerce-cart
+👤 Author
+Built as a learning-focused, clean-architecture Laravel project.
