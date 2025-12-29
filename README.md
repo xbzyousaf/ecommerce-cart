@@ -61,6 +61,10 @@ php artisan schedule:list
 Daily sales report runs at:
 23:59 (server time)
 
+Run daily report manually
+php artisan tinker
+dispatch(new App\Jobs\DailySalesReportJob());
+
 📧 Mail Configuration
 Emails are currently logged using:
 MAIL_MAILER=log
